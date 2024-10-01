@@ -73,4 +73,10 @@ class FrontController extends Controller
     {
         //
     }
+
+    public function register()
+    {
+        $kategoris = Kategori::all();
+        return view('register',['kategoris' => $kategoris]);
+    }
 }
