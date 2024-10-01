@@ -14,7 +14,7 @@ class FrontController extends Controller
     public function index()
     {
         $kategoris = Kategori::all();
-        $menus = Menu::all();
+        $menus = Menu::paginate(3);
         return view('menu',[
             'kategoris' => $kategoris,
             'menus' => $menus
@@ -40,9 +40,14 @@ class FrontController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $kategoris = Kategori::all();
+        $menus = Menu::where('idkategori', $id)->paginate(3);
+        return view('kategori',[
+            'kategoris'=>$kategoris,
+            'menus'=>$menus
+        ] );
     }
 
     /**

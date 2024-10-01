@@ -8,3 +8,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [FrontController::class, 'index']);
+Route::get('/show/{id}', [FrontController::class, 'show']);
