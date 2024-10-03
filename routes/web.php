@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontController;
-use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -23,3 +24,7 @@ Route::get('kurang/{idmenu}', [CartController::class, 'kurang']);
 Route::get('cart', [CartController::class, 'cart']);
 Route::get('batal', [CartController::class, 'batal']);
 Route::get('checkout', [CartController::class, 'checkout']);
+Route::get('admin', [AuthController::class, 'index']);
+Route::post('admin/postlogin', [AuthController::class, 'postlogin']);
+
+
