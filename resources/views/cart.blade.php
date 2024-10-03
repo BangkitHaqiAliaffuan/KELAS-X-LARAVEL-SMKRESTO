@@ -2,11 +2,15 @@
 
 @section('content')
 
-@if(session)
+@if(session('cart'))
 
 <div class="">
+    <div class="">
+        <a class="btn btn-danger" href="{{ url('batal') }}">Batal</a>
+    </div>
     @php
         $no=1;
+        $total = 0;
     @endphp
     <table class="table">
         <thead>
@@ -23,13 +27,37 @@
                     <td>{{ $no++ }}</td>
                     <td>{{ $menu['menu'] }}</td>
                     <td>{{ $menu['harga'] }}</td>
-                    <td>{{ $menu['jumlah'] }}</td>
+                    <td>
+                        <span>
+                            <a href="{{ url('kurang/'.$menu['idmenu']) }}">
+                                [-]
+                            </a>
+                        </span>
+                        {{ $menu['jumlah'] }}
+                        <span>
+                            <a href="{{ url('tambah/'.$menu['idmenu']) }}">
+                                [+]
+                            </a>
+                        </span>
+                    </td>
                     <td>{{ $menu['jumlah'] * $menu['harga'] }}</td>
-                    <td>Hapus</td>
+                    <td>
+                        <a href="{{ url('hapus/'.$menu['idmenu']) }}">Hapus</a>
+                    </td>
                 </tr>
+            @php
+                $total = $total + ($menu['jumlah'] * $menu['harga']);
+            @endphp
             @endforeach
+                <tr>
+                    <td colspan="4">Total Pembayaran</td>        
+                    <td>{{ $total }}</td>        
+                </tr>
         </tbody>  
     </table>
+    <div class="">
+        <a class="btn btn-success" href="{{ url('checkout') }}">Checkout</a>
+    </div>
 </div>
 
 @else

@@ -31,7 +31,6 @@
                         <li class="nav-item">Cart</li>
                         @endif
 
-                        <li class="nav-item">Cart</li>
 
                         @if (session()->missing('idpelanggan'))
                             
