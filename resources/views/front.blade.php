@@ -17,6 +17,20 @@
                         <img src="{{ asset('images/instagram.png') }}" alt="">
                     </a>
                     <ul class="navbar-nav gap-5">
+
+                        @if (session()->has('cart'))
+                        <li class="nav-item"><a href="{{ url('cart') }}">Cart(
+                        
+                            @php
+                                $count = count(session('cart'));
+                                echo $count;
+                            @endphp
+                            
+                        ) </a> </li>
+                        @else
+                        <li class="nav-item">Cart</li>
+                        @endif
+
                         <li class="nav-item">Cart</li>
 
                         @if (session()->missing('idpelanggan'))

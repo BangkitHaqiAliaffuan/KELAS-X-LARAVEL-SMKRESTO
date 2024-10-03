@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +15,7 @@ Route::get('login', [FrontController::class, 'login']);
 Route::get('logout', [FrontController::class, 'logout']);
 Route::post('postregister', [FrontController::class, 'store']);
 Route::post('postlogin', [FrontController::class, 'postlogin']);
+Route::get('beli/{idmenu}', [CartController::class, 'beli']);
 
+Route::get('cart', [CartController::class, 'cart']);
 ?>
