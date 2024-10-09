@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use Illuminate\Support\Facades\Request;
 use App\Http\Requests\StoreKategoriRequest;
 use App\Http\Requests\UpdateKategoriRequest;
 
@@ -13,7 +14,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('Backend.kategori.select');
+        $kategoris = Kategori::all();
+        return view('Backend.kategori.select', ['kategoris'=>$kategoris]);
     }
 
     /**
@@ -21,39 +23,58 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('Backend.kategori.insert');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreKategoriRequest $request)
+    public function store(Request $request)
     {
-        //
-    }
+        $data = $request->validate([
+            'kategoris' => 'required',
+        ]);
 
+        Kategori::create([
+            'kategori' => $data['kategori'],
+        ]);
+
+        return redirect('admin/kategori');
+        
+    }
+    
     /**
      * Display the specified resource.
      */
-    public function show(Kategori $kategori)
+    public function show($idkategori)
     {
-        //
+        Kategori::where('idkategori', '=', $idkategori)->delete();
+        return redirect('admin/kategori');
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kategori $kategori)
+    public function edit($idkategori)
     {
-        //
+        $kategori = Kategori::where('idkategori', $idkategori)->first();
+        return view('Backend.kategori.update',['kategori'=>$kategori]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKategoriRequest $request, Kategori $kategori)
+    public function update(Request $request, $idkategori)
     {
-        //
+        $data = $request->validate([
+            'kategori' =>'required',
+        ]);
+
+        Kategori::where('idkategori', $idkategori)->update([
+            'kategori' => $data['kategori'],
+        ]);
+
+        return redirect('admin/kategori');
     }
 
     /**
