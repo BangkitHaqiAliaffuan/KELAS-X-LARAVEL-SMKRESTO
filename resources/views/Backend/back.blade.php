@@ -48,16 +48,16 @@
                     
                     @if (Auth::user()->level == 'manager')
                     <li class="list-group-item">
-                        <a href="">Kategori</a>
+                        <a href="{{ url('admin/kategori') }}">Kategori</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="">Menu</a>
+                        <a href="{{ url('admin/menu') }}">Menu</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="">Pelanggan</a>
+                        <a href="{{ url('admin/pelanggan') }}">Pelanggan</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="">Order</a>
+                        <a href="admin/order">Order</a>
                     </li>
                     <li class="list-group-item">
                         <a href="">Order Detail</a>
