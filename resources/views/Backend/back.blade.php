@@ -57,10 +57,10 @@
                         <a href="{{ url('admin/pelanggan') }}">Pelanggan</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="admin/order">Order</a>
+                        <a href="{{ url('admin/order') }}">Order</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="">Order Detail</a>
+                        <a href="{{ url('admin/orderdetail') }}">Order Detail</a>
                     </li>
                     @endif
                     

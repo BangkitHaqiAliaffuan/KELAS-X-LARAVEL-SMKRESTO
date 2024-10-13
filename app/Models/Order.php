@@ -15,5 +15,6 @@ class Order extends Model
         'total',
         'bayar',
         'kembali',
+        'status',
     ];
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Orderdetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\OrderdetailController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -38,7 +40,9 @@ Route::group(['prefix' => 'admin','middleware' =>['auth']], function(){
     });
     Route::group(['middleware' =>['Ceklogin:kasir']],function(){
         Route::resource('kategori', KategoriController::class);
+        Route::resource('order', OrderController::class);
         Route::resource('menu', MenuController::class);
+        Route::resource('orderdetai;', OrderdetailController::class);
         Route::get('select', [MenuController::class, 'select']);
         Route::get('postmenu(id)', [MenuController::class, 'update']);
     });

@@ -4,13 +4,7 @@
 <div class="row">
     <div class="col-6">
         <form action="{{ url('admin/kategori') }}" method="post">
-            @csrf
-            @if (Session::has('pesan'))
-                <div class="alert alert-danger">
-                    {{ Session::get('pesan') }}
-                </div>
-            @endif
-            
+            @csrf       
             <div class="">
                 <label class="form-label" for="">kategori</label>
                 <input class="form-control" value="{{ old('kategori') }}" type="text" name="kategori" id="">
