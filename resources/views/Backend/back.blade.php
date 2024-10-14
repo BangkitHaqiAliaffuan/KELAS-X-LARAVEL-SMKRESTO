@@ -34,7 +34,7 @@
                 <ul class="list-group">
                     @if (Auth::user()->level == 'admin')
                     <li class="list-group-item">
-                        <a href="">User</a>
+                        <a href="{{ url('admin/user') }}">User</a>
                     </li>
                     @endif
                     @if (Auth::user()->level == 'kasir')
